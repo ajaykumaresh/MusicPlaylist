@@ -1,0 +1,3 @@
+export const GET_ALBUM='GET_ALBUM';
+export const GET_SONG='GET_SONG';
+export const REQUEST_FOR_LOADING="REQUEST_FOR_LOADING";
