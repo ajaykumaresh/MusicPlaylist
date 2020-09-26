@@ -1,4 +1,4 @@
-import {GET_PLAYLIST} from './localstorageType'
+import {GET_PLAYLIST,ADDSONGS} from './localstorageType'
 const InitialValue={
     localstorage:[]
 }
@@ -11,6 +11,8 @@ const localstorageReducer= (state=InitialValue,action)=>{
                 ...state,
                 localstorage:action.payload
                }
+               case ADDSONGS:
+                   return state
           default :
           return state
       }  

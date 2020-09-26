@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import {connect} from 'react-redux';
-import {getAlbum,getSongs } from '../redux/musicAction'
+import {getAlbum,getSongs } from '../redux/musicAction';
+import {addSongsLocalstore } from '../redux/localstorage/localstorageAction';
+
 const Allsongs= (props)=>{
     const [DisplayData,ActionToDispalay]=useState({})
     const [ProcessedData,ActionToProsses]=useState({
@@ -57,7 +59,7 @@ const Allsongs= (props)=>{
     const addToPlaylist=async (event)=>{
         let selectedId=event.target.name
         let selectedSong=await ProcessedData.SelectedArray.filter(dataToBe=>dataToBe.id===Number(selectedId));
-        console.log(selectedSong)
+        props.addSongs(props.currentItem.currntIndex,selectedSong)
     }
 
 
@@ -102,7 +104,8 @@ const mapStateToProps =state=>{
 const mapDispatchToProps =dispatch=>{
     return {
         getAllbum: () =>{dispatch(getAlbum())},
-        getSongs: () =>{dispatch(getSongs())}
+        getSongs: () =>{dispatch(getSongs())},
+        addSongs: (index,songs)=>{dispatch(addSongsLocalstore(index,songs))}
     }
 }
 

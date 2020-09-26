@@ -1,4 +1,4 @@
-import {REQUEST_FOR_LOADING,GET_PLAYLIST,objectTemplate} from './localstorageType'
+import {REQUEST_FOR_LOADING,ADDSONGS,GET_PLAYLIST,objectTemplate} from './localstorageType'
 
 //["{"name":"Playlist1","created_at":""}"]
   export const createLocalstore= ()=>{
@@ -24,7 +24,24 @@ import {REQUEST_FOR_LOADING,GET_PLAYLIST,objectTemplate} from './localstorageTyp
     dispatch(getplaylistResponse(localData))
     }
   }
+
+  export const addSongsLocalstore= (index,songs)=>{
+    return (dispatch)=>{
+    console.log(index,songs)
+    songs[0]['created_at']=dateformat();
+    let playlist=localStorage.getItem("Playlists");
+    let localData=JSON.parse(playlist)
+    localData[index].songs.push(songs[0])
+    localStorage.setItem("Playlists", JSON.stringify(localData));
+    dispatch(addsongs)
+  }
+  }
  
+  export const addsongs = () =>{
+    return {
+        type:ADDSONGS
+    }
+}
 
 export const LOADING = () =>{
     return {
