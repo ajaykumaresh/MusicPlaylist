@@ -27,7 +27,6 @@ import {REQUEST_FOR_LOADING,ADDSONGS,GET_PLAYLIST,objectTemplate} from './locals
 
   export const addSongsLocalstore= (index,songs)=>{
     return (dispatch)=>{
-    console.log(index,songs)
     songs[0]['created_at']=dateformat();
     let playlist=localStorage.getItem("Playlists");
     let localData=JSON.parse(playlist)
@@ -45,7 +44,6 @@ import {REQUEST_FOR_LOADING,ADDSONGS,GET_PLAYLIST,objectTemplate} from './locals
       localStorage.setItem("Playlists", JSON.stringify(localData));
       playlist=localStorage.getItem("Playlists");
     localData=JSON.parse(playlist)
-    console.log(localData)
     dispatch(getplaylistResponse(localData))
     }
     

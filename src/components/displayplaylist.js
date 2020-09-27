@@ -12,18 +12,14 @@ editpage:true,
 toggle:false,
 })
 useEffect(()=>{
-    console.log(props.responce.playlist.localstorage)
    let selectedItem= props.responce.playlist.localstorage[props.setData] 
-   console.log(selectedItem)
    ActiontoSelectedData({...selectedData,currentIndex:props.setData,currentData:selectedItem})
-   console.log(selectedData)
 },[props.responce.playlist])
 
 const HandleChange=()=>{
     ActiontoSelectedData({...selectedData,toggle:true})
 }
 const deleteSong =(e)=>{
-    console.log(e.target.name)
     props.deletePlaylistSong(selectedData.currentIndex,e.target.name)
 }
 
@@ -31,10 +27,13 @@ const shuffleOrder=()=>{
    let shuffleData= selectedData.currentData.songs.sort( () => Math.random() - 0.5)
    ActiontoSelectedData({...selectedData,currentData:{songs:shuffleData}})
 }
-
+const changeEvent=()=>{
+    ActiontoSelectedData({...selectedData,toggle:false})
+   props.getLocalstore()
+}
 return (
 <div>
-    {selectedData.toggle?<Allsongs currentItem={selectedData}/> :
+    {selectedData.toggle?<Allsongs currentItem={selectedData} onChangeEvent={()=>changeEvent()}/> :
  <div> 
 <button className="btn btn-primary" onClick={shuffleOrder}> Shuffle Order </button>
 <button className="btn btn-primary" onClick={HandleChange}> Add Songs</button>

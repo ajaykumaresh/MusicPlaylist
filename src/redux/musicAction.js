@@ -7,7 +7,6 @@ export const getAlbum = () =>{
       dispatch(LOADING)
     axios.get('https://jsonplaceholder.typicode.com/albums')
       .then(response=>{
-          console.log(response.data)
           dispatch(albumResponse(response.data))
       })
       .catch(err=>{
@@ -21,9 +20,7 @@ export const getSongs = () =>{
         dispatch(LOADING)
       axios.get('https://jsonplaceholder.typicode.com/photos')
         .then(response=>{
-           
             let processdata=response.data.slice(4750,response.data.length)
-            console.log(processdata)
             dispatch(songsResponse(processdata))
         })
         .catch(err=>{

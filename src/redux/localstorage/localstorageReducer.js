@@ -4,7 +4,6 @@ const InitialValue={
 }
 
 const localstorageReducer= (state=InitialValue,action)=>{
-     console.log(action)
       switch(action.type){
            case GET_PLAYLIST:
                return{

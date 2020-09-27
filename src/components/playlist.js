@@ -21,8 +21,6 @@ const Playlist= (props)=>{
     const HandleChange=(event)=>{
         ActionOnPageState({toggle:true,selectedPlaylist:event.target.name})
     }
-
-  console.log(pageState)
     return(
     <div>
         {pageState.toggle? (<DisplayPlaylist setData={pageState.selectedPlaylist}/>):
