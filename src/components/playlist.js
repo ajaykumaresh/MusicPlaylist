@@ -27,24 +27,24 @@ const Playlist= (props)=>{
        props.getLocalstore()
     }
     return(
-    <div>
-        {pageState.toggle? (<DisplayPlaylist setData={pageState.selectedPlaylist} onChangeEvent={()=>changeEvent()}/>):
         <div>
-        <button className="btn btn-primary" onClick={props.addLocalstore} > Add Playlist</button>
-         {localStore.value?localStore.value.map((playlist,index)=>{
-            return <div className="card row" style={{margin: '5px'}} key={index}>        
-            <div className="col-md-4">
-            <label><h5>{ playlist.name}</h5></label>
-        </div>
-        <div className="col-md-12">
-        <label><b>Created At : </b>  { playlist.created_at}  </label>
-        <button className="btn btn-primary pull-right" name={index} onClick={(e)=>HandleChange(e)}> Add Songs</button>
-        </div>
-        </div>
-        
-        }):<div className="card" style={{margin: '5px'}}>Add Your Custom Playlist</div>}
-        </div>
-}
+        {pageState.toggle ? (<DisplayPlaylist setData={pageState.selectedPlaylist} onChangeEvent={() => changeEvent()} />) :
+            <div>
+                <button className="btn btn-primary" onClick={props.addLocalstore} > Add Playlist</button>
+                {localStore.value ? localStore.value.map((playlist, index) => {
+                    return <div className="card my-3 p-3" key={index}>
+                        <div className="d-flex">
+                            <div className="mr-auto">
+                                <label className="mb-2"><h5 className="font-weight-bold mb-0">{playlist.name}</h5></label><br/>
+                                <label className="mb-0"><b>Created At : </b>  {playlist.created_at}  </label>
+                            </div>
+                            <button className="btn btn-info ml-3 align-self-start" name={index} onClick={(e) => HandleChange(e)}> Add Songs</button>
+                        </div>
+                    </div>
+
+                }) : <div className="card" style={{ margin: '5px' }}>Add Your Custom Playlist</div>}
+            </div>
+        }
     </div>
     )
 }

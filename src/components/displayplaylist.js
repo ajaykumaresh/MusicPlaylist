@@ -25,7 +25,7 @@ const deleteSong =(e)=>{
 
 const shuffleOrder=()=>{
    let shuffleData= selectedData.currentData.songs.sort( () => Math.random() - 0.5)
-   ActiontoSelectedData({...selectedData,currentData:{songs:shuffleData}})
+   ActiontoSelectedData({...selectedData,currentData:{...selectedData.currentData,songs:shuffleData}})
 }
 const changeEvent=()=>{
     ActiontoSelectedData({...selectedData,toggle:false})
@@ -35,32 +35,35 @@ const changeEvent=()=>{
 
 
 return (
-<div>
-    {selectedData.toggle?<Allsongs currentItem={selectedData} onChangeEvent={()=>changeEvent()}/> :
- <div> 
-     
-<button className="btn btn-primary" onClick={()=>props.onChangeEvent()}> Back </button>
-<button className="btn btn-primary" onClick={shuffleOrder}> Shuffle Order </button>
-<button className="btn btn-primary" onClick={HandleChange}> Add Songs</button>
-<label><b>{selectedData.currentData.name}</b></label>
-{
-    selectedData.currentData.songs.length? selectedData.currentData.songs.map((songs,index)=>{
-        return <div className="card row" style={{margin: '5px'}} key={index}>        
-            <div className="col-md-6">
-                <label><b>Song Name : </b> { songs.title}</label>
-                <label><b>Album Name : </b> { songs.albumName}</label>
+    <div>
+    {selectedData.toggle ? <Allsongs currentItem={selectedData} onChangeEvent={() => changeEvent()} /> :
+        <div className="p-3 border rounded">
+            <div className="d-flex">
+                <button className="btn btn-primary" onClick={() => props.onChangeEvent()}> Back </button>
+                <label className="mr-auto ml-2 align-self-center mb-0"><h5 className="mb-0 font-weight-bold">{selectedData.currentData.name}</h5></label>
+                <button className="btn btn-primary mx-2" onClick={shuffleOrder}> Shuffle Order </button>
+                <button className="btn btn-primary" onClick={HandleChange}> Add Songs</button>
             </div>
-            <div className="col-md-12">
-                <label><b>Created At : </b>  { songs.created_at}  </label>
-                 <button className="btn btn-primary pull-right" onClick={(e)=>deleteSong(e)} name={index}>Delete Songs</button> 
-            </div>
+
+            {
+                selectedData.currentData.songs.length ? selectedData.currentData.songs.map((songs, index) => {
+                    return <div className="card p-3 my-3" key={index}>
+                        <div className="d-flex">
+                        <img src={songs.thumbnailUrl} alt="thumbnail" className="card-image" />
+                            <div className="mr-auto px-3">
+                                <label><b>Song Name : </b> {songs.title}</label> <br/>
+                                <label><b>Album Name : </b> {songs.albumName}</label><br/>
+                                <label className="mb-0"><b>Created At : </b>  {songs.created_at}  </label>
+                            </div>
+                            <button className="btn btn-danger ml-3 align-self-start" onClick={(e) => deleteSong(e)} name={index}>Delete</button>
+                        </div>
+                    </div>
+                })
+
+                    : <div className="mt-3">Add Your Custom Songs</div>
+            }
         </div>
-    }) 
-    
-    : <div>Add Your Custom Songs</div>
-}
-</div>  
-}
+    }
 </div>
 )
 }

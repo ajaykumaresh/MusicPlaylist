@@ -67,31 +67,29 @@ const Allsongs= (props)=>{
 
     return(
         <div>
-            <input 
+        <input
             className="form-control form-control-lg"
             type="text"
             name="inputValue"
             placeholder="Enter song title to Search.."
-            onChange={(e)=>handleChange(e)} 
+            onChange={(e) => handleChange(e)}
             value={PageState.inputValue}
-            ></input>
-            {ProcessedData.SelectedArray.length ? ProcessedData.SelectedArray.map((Selecteditems)=>{
-                      return <div className="card row" style={{margin: '5px'}} key={Selecteditems.id}>
-                        
-                            <div className="col-md-3">
-                            <img src={ Selecteditems.thumbnailUrl} alt="thumbnail" / >
-                        </div>
-                        <div className="col-md-12">
-                        <label>Album :</label> <p>{ Selecteditems.albumName}</p>
-                       
-                        </div>
-                        <div className="col-md-12">
-                        <label>Song :</label> <p>{ Selecteditems.title}</p>
-                        {PageState.editable? <button className="btn btn-primary" name={Selecteditems.id} onClick={(e)=>{addToPlaylist(e)}}> Add To Playlist </button>:null}
-                        </div>
-                      </div>
-            }): <div className="card" style={{margin: '5px'}}>{PageState.errordisplay} </div>}
-      </div>
+        ></input>
+        {ProcessedData.SelectedArray.length ? ProcessedData.SelectedArray.map((Selecteditems) => {
+            return <div className="card p-3 my-3" key={Selecteditems.id}>
+                <div className="d-flex">
+                    <img src={Selecteditems.thumbnailUrl} alt="thumbnail" className="card-image" />
+                    <div className="mr-auto  px-3">
+                        <label className="mb-0 font-weight-bold">Album :</label>
+                        <div className="mb-2">{Selecteditems.albumName}</div>
+                        <label className="mb-0 font-weight-bold">Song :</label>
+                        <div>{Selecteditems.title}</div>
+                    </div>
+                    {PageState.editable ? <button className="btn btn-primary ml-3 align-self-start" name={Selecteditems.id} onClick={(e) => { addToPlaylist(e) }}> Add To Playlist </button> : null}
+                </div>
+            </div>
+        }) : <div className="card my-3 p-3 text-center font-weight-bold">{PageState.errordisplay} </div>}
+    </div>
     )
 }
 
