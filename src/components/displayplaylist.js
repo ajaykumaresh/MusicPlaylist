@@ -31,12 +31,18 @@ const changeEvent=()=>{
     ActiontoSelectedData({...selectedData,toggle:false})
    props.getLocalstore()
 }
+
+
+
 return (
 <div>
     {selectedData.toggle?<Allsongs currentItem={selectedData} onChangeEvent={()=>changeEvent()}/> :
  <div> 
+     
+<button className="btn btn-primary" onClick={()=>props.onChangeEvent()}> Back </button>
 <button className="btn btn-primary" onClick={shuffleOrder}> Shuffle Order </button>
 <button className="btn btn-primary" onClick={HandleChange}> Add Songs</button>
+<label><b>{selectedData.currentData.name}</b></label>
 {
     selectedData.currentData.songs.length? selectedData.currentData.songs.map((songs,index)=>{
         return <div className="card row" style={{margin: '5px'}} key={index}>        

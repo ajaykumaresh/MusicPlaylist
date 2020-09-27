@@ -26,7 +26,7 @@ const Allsongs= (props)=>{
     },[props.responce,DisplayData])
 
     // need to match songs id with albumid
-    // normal for loog used due to synchronous process
+    // normal for loop used due to synchronous process
     const processAllbumData=(DisplayData)=>{
         let AlbumObject={};
         let {album,songs}=DisplayData

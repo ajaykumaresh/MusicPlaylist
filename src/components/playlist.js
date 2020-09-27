@@ -21,11 +21,16 @@ const Playlist= (props)=>{
     const HandleChange=(event)=>{
         ActionOnPageState({toggle:true,selectedPlaylist:event.target.name})
     }
+
+    const changeEvent=()=>{
+        ActionOnPageState({...pageState,toggle:false})
+       props.getLocalstore()
+    }
     return(
     <div>
-        {pageState.toggle? (<DisplayPlaylist setData={pageState.selectedPlaylist}/>):
+        {pageState.toggle? (<DisplayPlaylist setData={pageState.selectedPlaylist} onChangeEvent={()=>changeEvent()}/>):
         <div>
-        <button className="btn btn-primary" onClick={props.addLocalstore}> Add Playlist</button>
+        <button className="btn btn-primary" onClick={props.addLocalstore} > Add Playlist</button>
          {localStore.value?localStore.value.map((playlist,index)=>{
             return <div className="card row" style={{margin: '5px'}} key={index}>        
             <div className="col-md-4">
