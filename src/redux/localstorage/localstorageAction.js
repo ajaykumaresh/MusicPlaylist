@@ -37,6 +37,19 @@ import {REQUEST_FOR_LOADING,ADDSONGS,GET_PLAYLIST,objectTemplate} from './locals
   }
   }
  
+  export const deletePlaylistSongs= (playlistIndex,songIndex)=>{
+    return (dispatch)=>{
+      let playlist=localStorage.getItem("Playlists");
+      let localData=JSON.parse(playlist)
+      localData[playlistIndex].songs=localData[playlistIndex].songs.filter((el,index)=>index!==Number(songIndex))
+      localStorage.setItem("Playlists", JSON.stringify(localData));
+      playlist=localStorage.getItem("Playlists");
+    localData=JSON.parse(playlist)
+    console.log(localData)
+    dispatch(getplaylistResponse(localData))
+    }
+    
+  }
   export const addsongs = () =>{
     return {
         type:ADDSONGS

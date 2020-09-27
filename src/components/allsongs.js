@@ -59,7 +59,7 @@ const Allsongs= (props)=>{
     const addToPlaylist=async (event)=>{
         let selectedId=event.target.name
         let selectedSong=await ProcessedData.SelectedArray.filter(dataToBe=>dataToBe.id===Number(selectedId));
-        props.addSongs(props.currentItem.currntIndex,selectedSong)
+        props.addSongs(props.currentItem.currentIndex,selectedSong)
     }
 
 
