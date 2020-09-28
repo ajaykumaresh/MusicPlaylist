@@ -40,7 +40,7 @@ return (
         <div className="p-3 border rounded">
             <div className="d-flex">
                 <button className="btn btn-primary" onClick={() => props.onChangeEvent()}> Back </button>
-                <label className="mr-auto ml-2 align-self-center mb-0"><h5 className="mb-0 font-weight-bold">{selectedData.currentData.name}</h5></label>
+                <label className="mr-auto ml-2 align-self-center mb-0"><h5 className="mb-0 font-weight-bold">{selectedData.currentData.name ? selectedData.currentData.name : null}</h5></label>
                 <button className="btn btn-primary mx-2" onClick={shuffleOrder}> Shuffle Order </button>
                 <button className="btn btn-primary" onClick={HandleChange}> Add Songs</button>
             </div>
@@ -55,7 +55,7 @@ return (
                                 <label><b>Album Name : </b> {songs.albumName}</label><br/>
                                 <label className="mb-0"><b>Created At : </b>  {songs.created_at}  </label>
                             </div>
-                            <button className="btn btn-danger ml-3 align-self-start" onClick={(e) => deleteSong(e)} name={index}>Delete</button>
+                            <button className="btn btn-danger ml-3 align-self-center" onClick={(e) => deleteSong(e)} name={index}>Delete</button>
                         </div>
                     </div>
                 })

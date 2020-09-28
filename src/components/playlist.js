@@ -42,7 +42,7 @@ const Playlist= (props)=>{
                         </div>
                     </div>
 
-                }) : <div className="card" style={{ margin: '5px' }}>Add Your Custom Playlist</div>}
+                }) : <div className="card my-3 p-3">Add Your Custom Playlist</div>}
             </div>
         }
     </div>
