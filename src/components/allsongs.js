@@ -85,7 +85,7 @@ const Allsongs= (props)=>{
                         <label className="mb-0 font-weight-bold">Song :</label>
                         <div>{Selecteditems.title}</div>
                     </div>
-                    {PageState.editable ? <button className="btn btn-primary ml-3 align-self-start" name={Selecteditems.id} onClick={(e) => { addToPlaylist(e) }}> Add To Playlist </button> : null}
+                    {PageState.editable ? <button className="btn btn-primary ml-3 align-self-center" name={Selecteditems.id} onClick={(e) => { addToPlaylist(e) }}> Add To Playlist </button> : null}
                 </div>
             </div>
         }) : <div className="card my-3 p-3 text-center font-weight-bold">{PageState.errordisplay} </div>}

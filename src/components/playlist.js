@@ -38,7 +38,7 @@ const Playlist= (props)=>{
                                 <label className="mb-2"><h5 className="font-weight-bold mb-0">{playlist.name}</h5></label><br/>
                                 <label className="mb-0"><b>Created At : </b>  {playlist.created_at}  </label>
                             </div>
-                            <button className="btn btn-info ml-3 align-self-start" name={index} onClick={(e) => HandleChange(e)}> Add Songs</button>
+                            <button className="btn btn-info ml-3 align-self-center" name={index} onClick={(e) => HandleChange(e)}> Add Songs</button>
                         </div>
                     </div>
 
